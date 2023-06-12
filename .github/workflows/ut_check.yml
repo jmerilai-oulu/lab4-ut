@@ -3,10 +3,9 @@ on: [push]
 env:
   RUST_VERSION: 1.70.0
   RUST_VERSION_NIGHTLY: nightly-2023-06-12
-  COVERAGE_THRESHOLD: 90
+  COVERAGE_THRESHOLD: 95
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage
-          path: coverage
+          path: coverage.html
           if-no-files-found: error
           retention-days: 1
       - name: Check coverage threshold
