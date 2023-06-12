@@ -1,4 +1,3 @@
-
 pub fn caesar_encrypt(message: &str, shift: u8) -> String {
     let mut encrypted_message = String::new();
 
@@ -46,5 +45,20 @@ mod tests {
     #[test]
     fn test_caesar_encrypt() {
         assert_eq!(caesar_encrypt("hello world", 3), "khoor zruog");
+    }
+
+    #[test]
+    fn test_caesar_decrypt() {
+        assert_eq!(caesar_decrypt("khoor zruog", 3), "hello world");
+    }
+
+    #[test]
+    fn test_atbash_encrypt() {
+        assert_eq!(atbash_encrypt("hello world"), "svool dliow");
+    }
+
+    #[test]
+    fn test_atbash_decrypt() {
+        assert_eq!(atbash_decrypt("svool dliow"), "hello world");
     }
 }
