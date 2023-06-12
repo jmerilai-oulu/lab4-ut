@@ -45,4 +45,4 @@ jobs:
           if-no-files-found: error
           retention-days: 1
       - name: Check coverage threshold
-        run: bash .github/check_coverage.sh
+        run: bash .github/workflows/scripts/check_coverage.sh
