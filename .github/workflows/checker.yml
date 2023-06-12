@@ -10,7 +10,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: ${{ env.RUST_VERSION_STABLE }}
+          toolchain: 1.55.0
           profile: minimal
           override: true
       - name: Build
@@ -29,7 +29,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: ${{ env.RUST_VERSION_NIGHTLY }}
+          toolchain: nightly-2019-09-13
           profile: minimal
           components: llvm-tools-preview
           override: true
