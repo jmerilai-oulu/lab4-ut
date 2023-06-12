@@ -1,5 +1,10 @@
 on: [push]
 
+env:
+  RUST_VERSION: 1.70.0
+  RUST_VERSION_NIGHTLY: nightly-2023-06-12
+  COVERAGE_THRESHOLD: 90
+
 jobs:
 
   test:
@@ -10,7 +15,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: 1.70.0
+          toolchain: ${{env.RUST_VERSION}}
           profile: minimal
           override: true
       - name: Build
@@ -29,7 +34,7 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly-2023-06-12
+          toolchain: ${{env.RUST_VERSION_NIGHTLY}}
           profile: minimal
           components: llvm-tools-preview
           override: true
