@@ -7,9 +7,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run tests and check coverage
         run: |
-          chmod +x ./run_tests.sh
-          ./run_tests.sh
+          chmod +x ./scripts/run_tests.sh
+          ./scripts/run_tests.sh
       - name: Check coverage percentage
         run: |
-          chmod +x ./check_coverage.sh
-          ./check_coverage.sh
+          chmod +x ./scripts/check_coverage.sh
+          ./scripts/check_coverage.sh
