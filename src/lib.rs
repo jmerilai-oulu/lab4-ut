@@ -67,6 +67,6 @@ mod tests {
         assert_eq!(caesar_encrypt("hello world", 3), "khoor zruog");
     }
 
-    // add more tests here
+    // Add more tests here
 
 }

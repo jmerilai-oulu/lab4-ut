@@ -1,5 +1,7 @@
 #!/bin/bash
-set -xeu
 
-RUSTFLAGS="-Zinstrument-coverage" cargo test --lib
-grcov . --binary-path ./target/debug/ -s . -t html --branch --ignore-not-existing -o ./coverage/ --excl-start "#\[cfg\(test\)\]" --keep-only **/src/**/*
+set -e
+
+# Run tests and generate coverage report
+cargo tarpaulin --out Xml
+bash <(curl -s https://codecov.io/bash) -f coverage.xml -t "$CODECOV_TOKEN" || echo "Codecov failed to upload"

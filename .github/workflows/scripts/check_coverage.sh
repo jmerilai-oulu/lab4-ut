@@ -1,11 +1,14 @@
 #!/bin/bash
-set -xeu
 
-coverage=$(grep -m 1 '<abbr title' coverage/index.html | grep -o "[0-9.]*" | tail -1)
-failure=$(awk 'BEGIN{ print '"$coverage"'<'"$COVERAGE_THRESHOLD"' }')
-if [ "$failure" -eq "1" ]; then
-    echo "Coverage has failed with $coverage% instead of at least $COVERAGE_THRESHOLD%."
-    exit 1
+set -e
+
+# Check coverage percentage
+coverage_percentage=$(grep -oPm1 "(?<=line-rate=\")[^\"]*" coverage.xml)
+coverage_percentage=$(echo "$coverage_percentage*100" | bc)
+
+if [ $(echo "$coverage_percentage > 90" | bc -l) -eq 1 ]; then
+  echo "Coverage is above 90%: $coverage_percentage%"
 else
-    echo "Coverage has successfully passed with $coverage%."
+  echo "Coverage is below 90%: $coverage_percentage%"
+  exit 1
 fi
