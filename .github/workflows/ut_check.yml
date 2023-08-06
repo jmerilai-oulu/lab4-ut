@@ -9,8 +9,8 @@ jobs:
       - name: Install cargo-tarpaulin
         run: cargo install cargo-tarpaulin
 
-      - name: Run tests and check coverage
+      - name: Run tests
         run: bash .github/workflows/scripts/run_tests.sh
 
-      - name: Check coverage percentage
+      - name: Check coverage
         run: bash .github/workflows/scripts/check_coverage.sh
