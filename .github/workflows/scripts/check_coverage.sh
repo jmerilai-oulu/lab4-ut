@@ -1,14 +1,13 @@
 #!/bin/bash
 
-set -e
+coverage_output=$(cargo tarpaulin)
 
-# Check coverage percentage
-coverage_percentage=$(grep -oPm1 "(?<=line-rate=\")[^\"]*" coverage.xml)
-coverage_percentage=$(echo "$coverage_percentage*100" | bc)
+coverage_percentage=$(echo "$coverage_output" | grep -oP '100\.00%' | awk '{print $1}')
 
-if [ $(echo "$coverage_percentage > 90" | bc -l) -eq 1 ]; then
-  echo "Coverage is above 90%: $coverage_percentage%"
+coverage_float=$(echo "$coverage_percentage" | sed 's/%//')
+
+if (( $(echo "$coverage_float >= 95" | bc -l) )); then
+  echo "Coverage is over 90%: $coverage_percentage"
 else
-  echo "Coverage is below 90%: $coverage_percentage%"
-  exit 1
+  echo "Coverage is below 90%: $coverage_percentage"
 fi

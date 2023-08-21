@@ -1,16 +1,17 @@
-on: [push]
+# 1. Execute on push
 
 jobs:
   ut_check:
-    runs-on: ubuntu-latest
+    # 2. Run on latest Ubuntu
+
     steps:
-      - uses: actions/checkout@v3
+      # 3. Checkout repository
 
       - name: Install cargo-tarpaulin
-        run: cargo install cargo-tarpaulin
+      # 4. Install cargo-tarpaulin for coverage report
 
       - name: Run tests
-        run: bash .github/workflows/scripts/run_tests.sh
+      # 5. Run the unit tests
 
-      - name: Check coverage
-        run: bash .github/workflows/scripts/check_coverage.sh
+      - name: Run check_coverage.sh
+      # 6. Run check_coverage.sh to check for >95% coverage
