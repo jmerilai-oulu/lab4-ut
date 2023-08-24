@@ -10,8 +10,5 @@ jobs:
       - name: Install cargo-tarpaulin
       # 4. Install cargo-tarpaulin for coverage report
 
-      - name: Run tests
-      # 5. Run the unit tests
-
       - name: Run check_coverage.sh
-      # 6. Run check_coverage.sh to check for >95% coverage
+      # 5. Run check_coverage.sh to check for >95% coverage
